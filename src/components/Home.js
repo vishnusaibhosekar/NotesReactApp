@@ -29,7 +29,7 @@ export function Home({ database }) {
         navigate("/");
       }
     });
-  });
+  }, []);
 
   const addNote = () => {
     addDoc(databaseCollection, {
@@ -47,6 +47,11 @@ export function Home({ database }) {
       });
   };
 
+  const openEditor = (id) => {
+    alert("Opening Editor " + id);
+    navigate(`/editor/${id}`);
+  };
+
   useEffect(() => {
     onSnapshot(databaseCollection, (data) => {
       setNotesData(
@@ -55,7 +60,7 @@ export function Home({ database }) {
         })
       );
     });
-  });
+  }, []);
 
   return (
     <div>
@@ -92,7 +97,7 @@ export function Home({ database }) {
       <div className="grid-main">
         {notesData.map((note) => {
           return (
-            <div className="grid-child">
+            <div key={note.title} className="grid-child" onClick={() => openEditor(note.id)}>
               <h3>{note.title}</h3>
             </div>
           );

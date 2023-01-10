@@ -31,7 +31,7 @@ export function Login() {
         navigate("/");
       }
     });
-  });
+  }, []);
 
   return (
     <div className="google-btn">
