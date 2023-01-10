@@ -48,7 +48,6 @@ export function Home({ database }) {
   };
 
   const openEditor = (id) => {
-    alert("Opening Editor " + id);
     navigate(`/editor/${id}`);
   };
 
